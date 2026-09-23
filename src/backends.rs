@@ -38,6 +38,9 @@ cfg_if! {
                 ));
             }
         }
+    } else if #[cfg(target_os = "scarlet")] {
+        mod scarlet;
+        pub use scarlet::*;
     } else if #[cfg(all(target_os = "linux", target_env = ""))] {
         mod linux_raw;
         pub use linux_raw::*;
