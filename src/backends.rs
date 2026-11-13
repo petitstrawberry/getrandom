@@ -35,6 +35,9 @@ cfg_if! {
     } else if #[cfg(getrandom_backend = "extern_impl")] {
         pub(crate) mod extern_impl;
         pub use extern_impl::*;
+    } else if #[cfg(target_os = "scarlet")] {
+        mod scarlet;
+        pub use scarlet::*;
     } else if #[cfg(all(target_os = "linux", target_env = ""))] {
         mod linux_raw;
         pub use linux_raw::*;
